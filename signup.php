@@ -6,6 +6,7 @@
 $showError=false;
     if($_SERVER['REQUEST_METHOD']=='POST'){
         include "partials/_dbconnect.php";
+        $name=$_POST['name'];
         $username=$_POST['username'];
         $password=$_POST['password'];
         $cpassword=$_POST['cpassword'];
@@ -23,12 +24,13 @@ $showError=false;
 
         if($password==$cpassword && $exist==false){
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql="INSERT INTO `users` (`username`, `password`) VALUES ('$username', '$hash')";
+            $sql="INSERT INTO `users` ( `name`, `username`, `password`) VALUES ('$name', '$username', '$hash')";
             $result=mysqli_query($conn, $sql);
             if($result){
                 session_start();
                 $_SESSION['loggedin']=true;
                 $_SESSION['username']=$username;
+                $_SESSION['name']=$name;
                 header("location: welcome.php");
             }
         }
@@ -57,6 +59,10 @@ $showError=false;
         <h1 class="text-center">Sign Up</h1>
 
         <form action="/login_proj/signup.php" method="post" class="d-flex flex-column align-items-center my-3">
+        <div class="mb-3 col-md-6">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" maxlength="23" class="form-control" id="name" name="name">
+            </div>
             <div class="mb-3 col-md-6">
                 <label for="username" class="form-label">Username</label>
                 <?php 
@@ -82,7 +88,7 @@ $showError=false;
                 
             </div>
             
-            <button type="submit" class="btn btn-primary col-md-5">Submit</button>
+            <button type="submit" class="btn btn-primary col-md-3">Sign Up</button>
         </form>
     </div>
 

@@ -20,6 +20,7 @@ $showError=false;
                     session_start();
                     $_SESSION['loggedin']=true;
                     $_SESSION['username']=$username;
+                    $_SESSION['name']=$row['name'];
                     header("location: welcome.php");
                 }
                 else{
@@ -95,7 +96,7 @@ $showError=false;
                 <input type="password" class="form-control" id="password" name="password">
             </div>
 
-            <button type="submit" class="btn btn-primary col-md-5">Submit</button>
+            <button type="submit" class="btn btn-primary col-md-3 mt-3">Log In</button>
         </form>
     </div>
 

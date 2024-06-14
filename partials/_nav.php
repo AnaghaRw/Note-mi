@@ -17,10 +17,6 @@ elseif($url=='signup.php'){
   echo '<button class="btn btn-outline-light py-2 px-3" onclick="login()">Log In</button>';
 }
 
-else{
-  echo '<button class="btn btn-outline-light py-2 px-3" onclick="logout()">Log Out</button>';
-}
-
 echo  '</div></nav>';
 ?>
 

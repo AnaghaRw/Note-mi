@@ -7,3 +7,4 @@ function signup() {
 function logout() {
     location.href = 'logout.php';
 }
+
