@@ -1,4 +1,9 @@
 <?php
+    $id=$_SESSION['id'];
+    $sql="SELECT * FROM `notes` WHERE `id` = '$id'";
+    $result=mysqli_query($conn,$sql);
+    $num=mysqli_num_rows($result);
+
 
 echo '<aside id="sidebar">
             <div class="logo d-flex">
@@ -25,17 +30,21 @@ echo '<aside id="sidebar">
                     <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
                         data-bs-target="#auth" aria-expanded="false" aria-controls="auth" id="dd"><i
                             class="lni lni-chevron-right" id="dd-icon"></i><span>&nbspNotes</span></a>
-                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="" class="sidebar-link"><i class="lni lni-notepad"></i>Note 1</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="" class="sidebar-link"><i class="lni lni-notepad"></i>Note 2</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="" class="sidebar-link"><i class="lni lni-notepad"></i>Note 3</a>
-                        </li>
-                    </ul>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">';
+            if($num>0){
+                while($row=mysqli_fetch_assoc($result)){
+                            echo '<li class="sidebar-item">
+                            <a href="" class="sidebar-link"><i class="lni lni-notepad"></i>'.$row['title'].'</a></li> ';
+                        }
+            }
+                        
+                        // <li class="sidebar-item">
+                        //     <a href="" class="sidebar-link"><i class="lni lni-notepad"></i>Note 2</a>
+                        // </li>
+                        // <li class="sidebar-item">
+                        //     <a href="" class="sidebar-link"><i class="lni lni-notepad"></i>Note 3</a>
+                        // </li>
+        echo    '</ul>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link"><i class="lni lni-calendar"></i><span>&nbspCalender</span></a>
@@ -48,4 +57,18 @@ echo '<aside id="sidebar">
                 <a href="logout.php" class="sidebar-link"><i class="lni lni-exit"></i><span>&nbspLog Out</span></a>
             </div>
         </aside>';
+
+        // $sql="SELECT `sno` FROM `users` WHERE `username` LIKE".$username;
+                    // $result=mysqli_query($conn, $sql);
+                    // while($row=mysqli_fetch_assoc($result)){
+                    //     $id= $row['sno'];
+                    //     echo $id;
+                    // }
+                    // $sql="SELECT * FROM `notes` WHERE `id`=".$id;
+                    // $result=mysqli_query($conn, $sql);
+                    // while($row=mysqli_fetch_assoc($result)){
+                    //     echo '<li class="sidebar-item">
+                    //          <a href="" class="sidebar-link"><i class="lni lni-notepad"></i>'.$row['title'].'</a>
+                    //     </li>';
+                    // }
 ?>

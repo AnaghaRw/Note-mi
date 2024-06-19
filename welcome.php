@@ -4,6 +4,7 @@
         header("location: \login_proj");
         exit;
     }
+    include "partials/_dbconnect.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +27,33 @@
     <div class="wrapper">
         <?php require 'partials\_sidebar.php'; ?>
         <div class="main">
-            <div class="container col-md-10">
-                <h1>Home Page</h1>
+            <div class="container col-md-10 text-center">
+                <p class="fs-1 fw-medium">Welcome to Note-mi,<strong>
+                    <?php echo $_SESSION['name'] ?></strong>
+                </p>
+                <div class="recent">
+                    <div class="fs-2 text-start py-2">Recent Notes</div>
+                    <div class="d-flex align-items-center" id="rec-cards">
+                        <?php
+                            $id=$_SESSION['id'];
+                            $sql="SELECT * FROM `notes` WHERE `id` = '$id' ORDER BY `updated_on` DESC";
+                            $result=mysqli_query($conn, $sql);
+                            $num=0;
+                            while($row=mysqli_fetch_assoc($result)){
+                                if($num<4){
+                                    $date=date_create($row['updated_on']);
+                                    echo '<div class="recent-card text-start">    
+                                        <div class="recent-title fs-4 fw-medium"><i class="lni lni-write me-2"></i>'
+                                        .$row['title'].'</div>
+                                        <div class="recent-date text-end">'.date_format($date,"dS M Y").'</div>
+                                        </div>';
+                                }
+                                $num+=1;
+                            }
+                        ?>
+                        <button id="new-note" class="new-btn"><i class="lni lni-plus"></i></button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -50,6 +76,19 @@
             ddi.classList.toggle("lni-chevron-right");
             ddi.classList.toggle("lni-chevron-down");
         });
+
+        function checkSize(){
+            if (screen.availWidth < 768) {
+                document.querySelector("#rec-cards").classList.remove("d-flex");
+            }
+            else{
+                document.querySelector("#rec-cards").classList.add("d-flex");
+
+            }
+        }
+        window.addEventListener("onload", checkSize);
+
+        window.addEventListener("resize", checkSize);
     </script>
 </body>
 

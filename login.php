@@ -19,7 +19,7 @@ $showError=false;
                     $login=true;
                     session_start();
                     $_SESSION['loggedin']=true;
-                    $_SESSION['username']=$username;
+                    $_SESSION['id']=$row['sno'];
                     $_SESSION['name']=$row['name'];
                     header("location: welcome.php");
                 }

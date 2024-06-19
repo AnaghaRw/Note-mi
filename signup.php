@@ -29,7 +29,11 @@ $showError=false;
             if($result){
                 session_start();
                 $_SESSION['loggedin']=true;
-                $_SESSION['username']=$username;
+                $sql="SELECT * FROM `users` WHERE `username` = '$username'";
+                $result=mysqli_query($conn, $sql);
+                while($row=mysqli_fetch_assoc($result)){
+                    $_SESSION['id']=$row['sno'];
+                }
                 $_SESSION['name']=$name;
                 header("location: welcome.php");
             }

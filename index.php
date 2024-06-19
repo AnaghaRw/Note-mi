@@ -31,7 +31,7 @@
     <div class="container col-md-10">
         <div class="welcome-card d-flex flex-column align-items-center text-center px-3">
             <div class="welcome-text text-wrap">
-                <p class="heading fw-medium"> Welcome to <span class="fw-semibold mx-2">Note-mi</span><img
+                <p class="heading fw-medium"> Welcome to <span class="fw-semibold mx-2 heading-name">Note-mi</span><img
                         src="assets\notes.png" alt="Notes"></p>
                 <p class="fs-3">Your personal note taker</p>
                 <button type="button" class="btn btn-outline-light btn-lg m-2" onclick="login()">Log In</button>

@@ -4,6 +4,12 @@ body{
     /* min-height: 100vh; */
 }
 
+/* .heading-name{
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+} */
+
 .navbar{
     color:rgb(217, 234, 249);
     font-family: "Lato", sans-serif;
@@ -47,8 +53,8 @@ body{
 }
 
 .welcome-text button:hover{
-    transition: ease-in transform 0.2s;
-    transform: scale(1.1);
+    transition: transform 1s ease-in;
+    transform: scale(1.2);
 }
 
 .heading{
@@ -81,6 +87,7 @@ body{
 
 .wrapper{
     display: flex;
+    font-family: "Lato", sans-serif;
 }
 
 .main{
@@ -88,11 +95,15 @@ body{
     width:100%;
     overflow: hidden;
     transition: all 0.35s ease-in-out;
+    margin:100px 50px;
+    margin-right:120px;
+    color:aliceblue;
 }
 
 #sidebar{
     width: 70px;
     min-width: 70px;
+    height:100vh;
     z-index:100;
     transition: all 0.25s ease-in-out;
     display: flex;
@@ -160,5 +171,58 @@ a.sidebar-link i{
 }
 
 .sidebar-footer{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.recent-card{
+    height:180px;
+    width:180px;
+    padding:20px;
+    margin:10px 20px;
+    box-sizing: border-box;
+    background-color: #010a1b;
+    border-radius: 20px;
+    box-shadow: -6px 6px 5px rgba(255,255,255,0.0925);
+    position: relative;
+    cursor: pointer;
+}
+
+.recent-title i{
+    font-size: 20px;
+}
+
+
+.recent-date{
+    height:60px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    background-color: #03173e;
+    font-size: 16px;
+    position: absolute;
+    bottom:0px;
+    border-radius: 0px 0px 20px 20px;
+    left:0px;
+    color: rgba(240,248,255,0.7);
+}
+
+.recent-card:hover{
+    transition: transform 0.5s ease-in;
+    transform: scale(1.1);
+}
+
+.new-btn{
+    margin: 20px;
+    background-color:#010a1b;
+    height:50px;
+    width: 50px;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 6px 6px 7px rgba(255,255,255,0.0525), -6px -6px 7px rgba(255,255,255,0.0725),6px -6px 7px rgba(255,255,255,0.0725), -6px 6px 7px rgba(255,255,255,0.0725);
+    padding-top: 10px;;
+}
+
+.new-btn:hover{
+    transition:all transform 0.8s ease-in;
+    transform: scale(1.05);
 }

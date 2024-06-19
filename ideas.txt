@@ -1,0 +1,8 @@
+all notes connected to the database w id as the foreign key
+
+give title and body for each notes, if they dont provide title use first 5-8 letters as title.
+
+display only first 5 recents
+home page - recent and calender
+
+username password change karne ke liye kuch
